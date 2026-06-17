@@ -48,6 +48,8 @@ x-live-env: &live-env
 
 x-app-env: &app-env
   WEB_URL: ${WEB_URL:-http://localhost}
+  ADMIN_EMAIL: ${ADMIN_EMAIL}
+  ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin}
   DEBUG: ${DEBUG:-0}
   CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS}
   GUNICORN_WORKERS: 1
@@ -72,6 +74,9 @@ services:
       <<: [*app-env, *proxy-env]
     depends_on:
       - api
+      - plane-db
+      - plane-redis
+      - plane-mq
 
   admin:
     container_name: admin

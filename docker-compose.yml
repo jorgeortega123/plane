@@ -115,6 +115,8 @@ services:
       - plane-db
       - plane-redis
       - plane-mq
+    expose:
+    - 8000
     networks:
       - dokploy-network
 
@@ -169,6 +171,8 @@ services:
       <<: [*live-env, *redis-env]
     networks:
       - dokploy-network
+    expose:
+     - 3000
 
   plane-db:
     container_name: plane-db

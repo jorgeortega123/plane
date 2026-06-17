@@ -184,21 +184,21 @@ services:
       MINIO_ROOT_PASSWORD: ${AWS_SECRET_ACCESS_KEY}
 
   # Comment this if you already have a reverse proxy running
-  proxy:
-    container_name: proxy
-    image: makeplane/plane-proxy:${APP_RELEASE:-stable}
-    restart: always
-    expose:
-      - 80
-      - 443
-    environment:
-      <<: *proxy-env
-    depends_on:
-      - web
-      - api
-      - space
-      - admin
-      - live
+  # proxy:
+  #   container_name: proxy
+  #   image: makeplane/plane-proxy:${APP_RELEASE:-stable}
+  #   restart: always
+  #   expose:
+  #     - 80
+  #     - 443
+  #   environment:
+  #     <<: *proxy-env
+  #   depends_on:
+  #     - web
+  #     - api
+  #     - space
+  #     - admin
+  #     - live
 
 volumes:
   pgdata:

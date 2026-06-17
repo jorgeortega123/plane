@@ -66,8 +66,10 @@ services:
     container_name: web
     image: makeplane/plane-frontend:${APP_RELEASE:-stable}
     restart: always
-    ports:
-      - "8085:80"
+    expise:
+      - 80
+    environment:
+      <<: [*app-env, *proxy-env]
     depends_on:
       - api
 
@@ -75,6 +77,8 @@ services:
     container_name: admin
     image: makeplane/plane-admin:${APP_RELEASE:-stable}
     restart: always
+    environment:
+      <<: [*app-env, *proxy-env]
     depends_on:
       - api
       - web
@@ -83,6 +87,8 @@ services:
     container_name: space
     image: makeplane/plane-space:${APP_RELEASE:-stable}
     restart: always
+    environment:
+      <<: [*app-env, *proxy-env]
     depends_on:
       - api
       - web

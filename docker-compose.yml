@@ -248,6 +248,8 @@ services:
       - space
       - admin
       - live
+    networks:
+      - dokploy-network
 
 
 volumes:
